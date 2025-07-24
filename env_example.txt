@@ -1,0 +1,12 @@
+# Bear AI Assignment - Environment Configuration
+# Copy this file to .env and update with your database settings
+
+# PostgreSQL Database URL
+# Format: postgresql://username:password@host:port/database_name
+DATABASE_URL=postgresql://localhost/bear_ai_db
+
+# Example for local PostgreSQL:
+# DATABASE_URL=postgresql://postgres:password@localhost:5432/bear_ai_db
+
+# Example for Supabase:
+# DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres 

@@ -1,0 +1,122 @@
+[
+  {
+    "prompt_id": 1,
+    "prompt": "What are the best running shoes in 2025?",
+    "response_length": 119,
+    "brand_mentions": {
+      "Nike": 2,
+      "Adidas": 2,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134005"
+  },
+  {
+    "prompt_id": 2,
+    "prompt": "Top performance sneakers for athletes",
+    "response_length": 99,
+    "brand_mentions": {
+      "Nike": 1,
+      "Adidas": 0,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134037"
+  },
+  {
+    "prompt_id": 3,
+    "prompt": "Best basketball shoes for outdoor courts",
+    "response_length": 96,
+    "brand_mentions": {
+      "Nike": 0,
+      "Adidas": 0,
+      "Hoka": 1,
+      "New Balance": 1
+    },
+    "timestamp": "2025-07-23T16:57:36.134055"
+  },
+  {
+    "prompt_id": 4,
+    "prompt": "Most comfortable walking shoes for daily use",
+    "response_length": 99,
+    "brand_mentions": {
+      "Nike": 1,
+      "Adidas": 1,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134071"
+  },
+  {
+    "prompt_id": 5,
+    "prompt": "Professional tennis shoes recommendations",
+    "response_length": 98,
+    "brand_mentions": {
+      "Nike": 0,
+      "Adidas": 0,
+      "Hoka": 0,
+      "New Balance": 1
+    },
+    "timestamp": "2025-07-23T16:57:36.134086"
+  },
+  {
+    "prompt_id": 6,
+    "prompt": "Best cross-training shoes for gym workouts",
+    "response_length": 97,
+    "brand_mentions": {
+      "Nike": 1,
+      "Adidas": 1,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134102"
+  },
+  {
+    "prompt_id": 7,
+    "prompt": "Top hiking boots for mountain trails",
+    "response_length": 97,
+    "brand_mentions": {
+      "Nike": 0,
+      "Adidas": 0,
+      "Hoka": 1,
+      "New Balance": 1
+    },
+    "timestamp": "2025-07-23T16:57:36.134116"
+  },
+  {
+    "prompt_id": 8,
+    "prompt": "Best soccer cleats for artificial turf",
+    "response_length": 95,
+    "brand_mentions": {
+      "Nike": 1,
+      "Adidas": 1,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134130"
+  },
+  {
+    "prompt_id": 9,
+    "prompt": "Most durable trail running shoes",
+    "response_length": 92,
+    "brand_mentions": {
+      "Nike": 0,
+      "Adidas": 0,
+      "Hoka": 1,
+      "New Balance": 1
+    },
+    "timestamp": "2025-07-23T16:57:36.134145"
+  },
+  {
+    "prompt_id": 10,
+    "prompt": "Best minimalist running shoes for natural movement",
+    "response_length": 92,
+    "brand_mentions": {
+      "Nike": 1,
+      "Adidas": 1,
+      "Hoka": 0,
+      "New Balance": 0
+    },
+    "timestamp": "2025-07-23T16:57:36.134159"
+  }
+]
