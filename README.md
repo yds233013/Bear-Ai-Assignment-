@@ -36,18 +36,15 @@ pip install -r requirements.txt
 ```
 
 ### Database Setup
-You'll need a PostgreSQL database. You can either:
+You'll need a PostgreSQL database:
 
-**Option 1: Local PostgreSQL**
 ```bash
+# Create database locally
 createdb bear_ai_db
+
+# Set environment variable
 export DATABASE_URL="postgresql://localhost/bear_ai_db"
 ```
-
-**Option 2: Supabase (easier)**
-1. Create a Supabase project
-2. Get your connection string
-3. Set: `export DATABASE_URL="postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres"`
 
 ### Environment
 ```bash
@@ -113,11 +110,14 @@ The API will be at http://localhost:8000
 python test_stage1.py
 ```
 
-## Notes
-- All files are under 100 lines as requested
-- Uses PostgreSQL as required (not SQLite)
-- Includes the bonus endpoint `/mentions/{brand}`
-- Has proper error handling and documentation
+## Assignment Requirements Met
 
-## Questions
-Contact: sid@usebear.ai 
+- ✅ 10 different sportswear prompts
+- ✅ Web scraping from ChatGPT website (not API)
+- ✅ Brand mention counting for Nike, Adidas, Hoka, New Balance
+- ✅ FastAPI with PostgreSQL database
+- ✅ GET /mentions endpoint
+- ✅ GET /mentions/{brand} endpoint (bonus)
+- ✅ All files under 100 lines
+- ✅ Structured JSON output
+- ✅ Clear setup instructions 
