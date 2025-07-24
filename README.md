@@ -1,202 +1,123 @@
-# Bear AI Technical Take-Home Assignment
+# Bear AI Assignment
 
-A full-stack system to analyze brand mentions from ChatGPT responses and expose metrics via API.
+This is my submission for the Bear AI technical take-home assignment. The project has two main parts:
 
-## 🎯 Project Overview
+1. **Stage 1**: Scraping ChatGPT responses for sportswear brand mentions
+2. **Stage 2**: Building an API to serve the brand mention data
 
-This project consists of two stages:
-- **Stage 1**: Web scraping ChatGPT with sportswear prompts and counting brand mentions
-- **Stage 2**: FastAPI server with PostgreSQL database to expose brand mention metrics
+## What it does
 
-## 📋 Requirements
+### Stage 1 - Web Scraping
+- Takes 10 different sportswear-related prompts
+- Queries ChatGPT website (not the API) using Selenium
+- Counts mentions of Nike, Adidas, Hoka, and New Balance
+- Saves results to a JSON file
 
+### Stage 2 - API
+- FastAPI server with PostgreSQL database
+- Endpoints to get brand mention counts
+- Loads the scraped data into the database
+
+## Setup
+
+### Prerequisites
 - Python 3.8+
 - PostgreSQL database
 - Chrome browser (for web scraping)
 
-## 🚀 Setup Instructions
-
-### 1. Clone and Install Dependencies
-
+### Installation
 ```bash
-git clone <repository-url>
-cd bear-ai
+# Clone the repo
+git clone https://github.com/yds233013/Bear-Ai-Assignment-.git
+cd Bear-Ai-Assignment-
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Database Setup
+### Database Setup
+You'll need a PostgreSQL database. You can either:
 
-#### Option A: Local PostgreSQL
+**Option 1: Local PostgreSQL**
 ```bash
-# Install PostgreSQL locally
-# Create database
 createdb bear_ai_db
-
-# Set environment variable
 export DATABASE_URL="postgresql://localhost/bear_ai_db"
 ```
 
-#### Option B: Supabase (Recommended)
+**Option 2: Supabase (easier)**
 1. Create a Supabase project
-2. Get your database connection string
-3. Set environment variable:
-```bash
-export DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres"
-```
+2. Get your connection string
+3. Set: `export DATABASE_URL="postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres"`
 
-### 3. Environment Configuration
-
-Create a `.env` file:
+### Environment
 ```bash
 cp env_example.txt .env
 # Edit .env with your database URL
 ```
 
-## 🏃‍♂️ How to Run
+## Running the Project
 
-### Stage 1: Web Scraping
-
+### Stage 1: Run the scraper
 ```bash
-# Run the web scraper
 python stage1_scraper.py
 ```
-
 This will:
-- Query ChatGPT with 10 sportswear prompts
-- Count mentions of Nike, Adidas, Hoka, New Balance
-- Save results to `brand_mentions_results.json`
+- Query ChatGPT with 10 prompts
+- Count brand mentions
+- Save to `brand_mentions_results.json`
 
-### Stage 2: API Server
-
+### Stage 2: Start the API
 ```bash
-# Start the API server
 python run_api.py
 ```
+The API will be at http://localhost:8000
 
-The API will be available at:
-- **API Documentation**: http://localhost:8000/docs
-- **API Base URL**: http://localhost:8000
+## API Endpoints
 
-## 🔗 API Endpoints
+- `GET /mentions` - Get total mentions for all brands
+- `GET /mentions/{brand}` - Get mentions for a specific brand  
+- `POST /load-data` - Load Stage 1 data into database
+- `GET /docs` - Interactive API docs
 
-### GET `/mentions`
-Returns total mentions for all brands.
-
-**Example Response:**
+### Example API Response
 ```json
 {
   "total_mentions": {
-    "Nike": 15,
-    "Adidas": 12,
-    "Hoka": 8,
-    "New Balance": 10
+    "Nike": 7,
+    "Adidas": 6,
+    "Hoka": 3,
+    "New Balance": 4
   },
   "total_records": 10,
   "brands_tracked": ["Nike", "Adidas", "Hoka", "New Balance"]
 }
 ```
 
-### GET `/mentions/{brand}`
-Returns mentions for a specific brand.
-
-**Example Response:**
-```json
-{
-  "brand": "Nike",
-  "total_mentions": 15,
-  "total_records": 10
-}
+## Project Structure
+```
+├── stage1_scraper.py      # Main scraping script
+├── api.py                 # FastAPI app
+├── api_routes.py          # API endpoints
+├── api_handlers.py        # Business logic
+├── database.py            # Database models
+├── config.py              # Configuration
+├── utils.py               # Helper functions
+├── run_api.py             # Server runner
+├── test_stage1.py         # Test script
+├── requirements.txt       # Dependencies
+└── README.md              # This file
 ```
 
-### POST `/load-data`
-Loads Stage 1 data into the database.
-
-**Example Response:**
-```json
-{
-  "message": "Successfully loaded 10 records from Stage 1",
-  "records_loaded": 10
-}
-```
-
-## 📊 Example Output
-
-### Stage 1 Output (`brand_mentions_results.json`)
-```json
-[
-  {
-    "prompt_id": 1,
-    "prompt": "What are the best running shoes in 2025?",
-    "response_length": 1250,
-    "brand_mentions": {
-      "Nike": 3,
-      "Adidas": 2,
-      "Hoka": 1,
-      "New Balance": 0
-    },
-    "timestamp": "2024-01-15T10:30:00"
-  }
-]
-```
-
-### Stage 2 API Response
-```json
-{
-  "total_mentions": {
-    "Nike": 25,
-    "Adidas": 18,
-    "Hoka": 12,
-    "New Balance": 15
-  },
-  "total_records": 10,
-  "brands_tracked": ["Nike", "Adidas", "Hoka", "New Balance"]
-}
-```
-
-## 🧪 Testing
-
-Run the test script to verify functionality:
+## Testing
 ```bash
 python test_stage1.py
 ```
 
-## 📁 Project Structure
+## Notes
+- All files are under 100 lines as requested
+- Uses PostgreSQL as required (not SQLite)
+- Includes the bonus endpoint `/mentions/{brand}`
+- Has proper error handling and documentation
 
-```
-bear-ai/
-├── stage1_scraper.py      # Main web scraping script
-├── api.py                 # FastAPI application
-├── api_routes.py          # API route definitions
-├── api_handlers.py        # API business logic
-├── database.py            # Database models and connection
-├── config.py              # Configuration constants
-├── utils.py               # Utility functions
-├── run_api.py             # API server runner
-├── test_stage1.py         # Test script
-├── requirements.txt       # Python dependencies
-├── env_example.txt        # Environment configuration example
-└── README.md              # This file
-```
-
-## 🔧 Technical Details
-
-- **Web Scraping**: Selenium with Chrome WebDriver
-- **API Framework**: FastAPI
-- **Database**: PostgreSQL (as required)
-- **ORM**: SQLAlchemy
-- **File Structure**: Modular design with files < 100 lines each
-
-## 🚀 Suggestions for Improvements
-
-1. **Authentication**: Add API key authentication
-2. **Rate Limiting**: Implement request rate limiting
-3. **Caching**: Add Redis caching for API responses
-4. **Monitoring**: Add logging and metrics collection
-5. **Scaling**: Containerize with Docker for easy deployment
-6. **Testing**: Add comprehensive unit and integration tests
-7. **Data Pipeline**: Implement scheduled data collection
-8. **Analytics**: Add trend analysis and reporting features
-
-## 📞 Questions
-
-For questions about this assignment, contact: sid@usebear.ai 
+## Questions
+Contact: sid@usebear.ai 
